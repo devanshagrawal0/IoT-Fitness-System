@@ -1,0 +1,17 @@
+[Unit]
+Description=SmartGym Telemetry
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/pi/smart-gym-pi
+ExecStart=/usr/bin/python3 /home/pi/smart-gym-pi/src/main.py
+Restart=always
+RestartSec=2
+User=pi
+Environment=SMARTGYM_GPIO_PIN=17
+Environment=SMARTGYM_PULSES_PER_REP=1
+
+[Install]
+WantedBy=multi-user.target
